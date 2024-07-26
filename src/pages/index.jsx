@@ -7,6 +7,7 @@ import { useEffect } from "react";
 export default function Homepage() {
   const [posts, setPosts] = useState(postsData);
   const [totalSearch, setTotalSearch] = useState(0);
+  const [externalPosts, setExternalPosts] = useState([]);
 
   const doTriggerChange = (value) => {
     const filteredPosts = postsData.filter((item) =>
@@ -17,11 +18,9 @@ export default function Homepage() {
   };
 
   useEffect(() => {
-    console.log("render");
-  });
-
-  useEffect(() => {
-    console.log("render sekali");
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((res) => res.json())
+      .then((json) => setExternalPosts(json));
   }, []);
 
   console.log("render outside");
@@ -37,6 +36,14 @@ export default function Homepage() {
         // bisa disingkat kek gni:
         return <Article {...{ title, tags, date, isNew }} key={index} />;
       })}
+
+      <hr />
+
+      <h2>External Posts</h2>
+
+      {externalPosts.map((item, index) => (
+        <div key={index}>- {item.title}</div>
+      ))}
     </>
   );
 }
