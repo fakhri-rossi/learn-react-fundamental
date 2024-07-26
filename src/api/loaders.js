@@ -3,5 +3,7 @@ export const posts = () => {
 };
 
 export const postById = ({ params }) => {
-  return fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
+  const data = fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
+  console.log(data);
+  return data;
 };
