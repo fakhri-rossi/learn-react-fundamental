@@ -1,14 +1,8 @@
-import { useState, useEffect } from "react";
+import { useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export default function Blog() {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((res) => res.json())
-      .then((json) => setPosts(json));
-  }, []);
+  const posts = useLoaderData();
 
   return (
     <>
