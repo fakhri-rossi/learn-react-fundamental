@@ -23,10 +23,10 @@ export default function Homepage(){
             <Search triggerChange={doTriggerChange} totalData={totalSearch} />
 
             {
-                posts.map(({ title, tags, date }, index) => {
+                posts.map(({ title, tags, date, isNew }, index) => {
                     // return <Article title={title} tags={tags} date={date} />
                     // bisa disingkat kek gni:
-                    return <Article { ...{ title, tags, date } } key={index} />
+                    return <Article { ...{ title, tags, date, isNew } } key={index} />
                 })
             }
         </>

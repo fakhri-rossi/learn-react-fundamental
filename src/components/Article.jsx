@@ -1,11 +1,18 @@
-function Article({ title, date, tags }) {
+const ArticleStatus = ( {isNew} ) => {
+  return isNew && <span> -- baru</span>
+}
+
+function Article(props) {
 
   return (
     <>
-      <h3>{title}</h3>
+      <h3>{props.title}</h3>
 
-      <small>Date: {date}, tags: {tags.join(", ")}</small>
-      
+      <small>
+        Date: {props.date}, tags: {props.tags.join(", ")}
+        <ArticleStatus isNew={props.isNew} />
+      </small>
+
     </>
   );
 }

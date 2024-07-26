@@ -2,16 +2,19 @@
     {
         "title": "Tutorial React Js",
         "tags": ["react", "frontend"],
-        "date": "2023-01-02"
+        "date": "2023-01-02",
+        "isNew": true
     },
     {
         "title": "Tutorial Vue Js",
         "tags": ["vue", "frontend"],
-        "date": "2023-01-22"
+        "date": "2023-01-22",
+        "isNew": false
     },
     {
         "title": "Tutorial Nuxt",
         "tags": ["nuxt", "frontend"],
-        "date": "2023-01-24"
+        "date": "2023-01-24",
+        "isNew": false
     }
 ]
