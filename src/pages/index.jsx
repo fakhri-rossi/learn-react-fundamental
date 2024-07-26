@@ -1,26 +1,24 @@
 import { useState } from "react";
 import Article from "../components/Article"
-import posts from "../posts.json"
+import postsData from "../posts.json"
+import Search from "../components/Search";
 
 
 export default function Homepage(){
-    const [search, setSearch] = useState("");
-    
-    const changeSearch = (event) => {
-        console.log(event.target.value);
-        setSearch(event.target.value)
+    const [posts, setPosts] = useState(postsData)
+
+    const doTriggerChange = (value) => {
+        const filteredPosts = postsData.filter((item) => 
+            item.title.toLowerCase().includes(value.toLowerCase())
+        )
+        setPosts(filteredPosts);
     }
 
     return (
         <>
             <h1>Homepage</h1>
 
-            <div>
-                <h3>Cari artikel: </h3>
-                <input type="text" onChange={ changeSearch } />
-            </div>
-
-            <p>text: {search}</p>
+            <Search triggerChange={doTriggerChange} />
 
             {
                 posts.map(({ title, tags, date }, index) => {
