@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Search(props) {
   const [search, setSearch] = useState("");
@@ -12,6 +12,13 @@ export default function Search(props) {
       changeSearch();
     }
   };
+
+  useEffect(() => {
+    console.log("pantau search");
+    return () => {
+      console.log("Cleanup!");
+    };
+  }, [search]);
 
   return (
     <>
