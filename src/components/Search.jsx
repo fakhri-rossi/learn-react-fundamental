@@ -13,7 +13,7 @@ export default function Search(props){
             <div>
                 <h3>Cari artikel: </h3>
                 <input type="text" onChange={ changeSearch } />
-                <p>search for: {search}</p>
+                <p>ditemukan {props.totalData} data dari pencarian {search}</p>
             </div>
         </>
     )

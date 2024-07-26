@@ -5,20 +5,22 @@ import Search from "../components/Search";
 
 
 export default function Homepage(){
-    const [posts, setPosts] = useState(postsData)
+    const [posts, setPosts] = useState(postsData);
+    const [totalSearch, setTotalSearch] = useState(0);
 
     const doTriggerChange = (value) => {
         const filteredPosts = postsData.filter((item) => 
             item.title.toLowerCase().includes(value.toLowerCase())
         )
         setPosts(filteredPosts);
+        setTotalSearch(filteredPosts.length)
     }
 
     return (
         <>
             <h1>Homepage</h1>
 
-            <Search triggerChange={doTriggerChange} />
+            <Search triggerChange={doTriggerChange} totalData={totalSearch} />
 
             {
                 posts.map(({ title, tags, date }, index) => {
