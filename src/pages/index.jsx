@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Article from "../components/Article";
 import postsData from "../posts.json";
 import Search from "../components/Search";
-import { useEffect } from "react";
 
 export default function Homepage() {
   const [posts, setPosts] = useState(postsData);
@@ -17,12 +16,6 @@ export default function Homepage() {
     setTotalSearch(filteredPosts.length);
   };
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((res) => res.json())
-      .then((json) => setExternalPosts(json));
-  }, []);
-
   console.log("render outside");
 
   return (
@@ -32,18 +25,8 @@ export default function Homepage() {
       <Search triggerChange={doTriggerChange} totalData={totalSearch} />
 
       {posts.map(({ title, tags, date, isNew }, index) => {
-        // return <Article title={title} tags={tags} date={date} />
-        // bisa disingkat kek gni:
         return <Article {...{ title, tags, date, isNew }} key={index} />;
       })}
-
-      <hr />
-
-      <h2>External Posts</h2>
-
-      {externalPosts.map((item, index) => (
-        <div key={index}>- {item.title}</div>
-      ))}
     </>
   );
 }
