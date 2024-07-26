@@ -1,8 +1,12 @@
-const ArticleStatus = ( {isNew} ) => {
-  return isNew && <span> -- baru</span>
-}
+import { useContext } from "react";
+import { GlobalContext } from "../context";
+
+const ArticleStatus = ({ isNew }) => {
+  return isNew && <span> -- baru</span>;
+};
 
 function Article(props) {
+  const user = useContext(GlobalContext);
 
   return (
     <>
@@ -13,6 +17,9 @@ function Article(props) {
         <ArticleStatus isNew={props.isNew} />
       </small>
 
+      <div>
+        <small>Ditulis oleh {user.username}</small>
+      </div>
     </>
   );
 }
